@@ -1,0 +1,12 @@
+.image-container {
+  height: auto;
+  width: auto;
+}
+
+.image-container img {
+  height: 15rem;
+  width: 20rem;
+  margin: 2rem 2rem;
+  margin-bottom: 0;
+  border-radius: 10px;
+}
