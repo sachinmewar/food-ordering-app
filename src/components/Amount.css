@@ -1,0 +1,35 @@
+.amount-container {
+  font-family: "Times New Roman", Times, serif;
+  margin: 1rem auto;
+}
+.amount-container input {
+  padding-top: 0.25rem;
+  height: 1.8rem;
+  width: 4rem;
+  border-radius: 12px;
+  font-weight: 650;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.amount-container #amount {
+  display: inline-block;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+}
+
+.amount-container input:active {
+  border-radius: 12px;
+}
+
+.amount-container #add {
+  cursor: pointer;
+  padding: 0;
+  margin: 0ex;
+  width: 4rem;
+  height: 2rem;
+  margin: 1rem 1rem;
+  text-align: center;
+  background-color: brown;
+  color: white;
+}
