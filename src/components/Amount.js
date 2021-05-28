@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import './Amount.css';
 import React from 'react';
+import Input from '../UI/Input';
 
-
-const Amount = () => {
+const Amount = (props) => {
    const [amount, setAmount] = useState('');
 
    const onChangeEventHandler = (event) => {
@@ -11,11 +11,21 @@ const Amount = () => {
    };
 
    return (
-      <div className='amount-container'>
-         <span id='amount'> Amount </span>
-         <input type='number' value={amount} min='1' max='10' onChange={onChangeEventHandler} />
+      <form className='amount-container'>
+         {
+            // Here we are passing the properties via JS object.
+         }
+         <Input label='Amount'
+            input={{
+               id: 'amount_' + props.id,
+               min: 1,
+               max: 10,
+               step: 1,
+               defaultValue: '1'
+            }}
+         />
          <button id='add'> Add </button>
-      </div>
+      </form>
    );
 }
 export default Amount;
