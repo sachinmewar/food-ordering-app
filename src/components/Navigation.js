@@ -1,5 +1,5 @@
 import './Navigation.css';
-import Cart from './Cart';
+import CartButton from '../Cart/CartButton';
 import Profile from './Profile';
 
 const Navigation = () => {
@@ -8,7 +8,7 @@ const Navigation = () => {
          <p id='logo'> Logo </p>
          <p id='location'> Location </p>
          <input type='search' id='search-bar' />
-         <Cart className='cart' />
+         <CartButton className='cart' />
          <Profile />
       </header>
    );
