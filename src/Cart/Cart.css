@@ -1,0 +1,17 @@
+.cart-container {
+  position: absolute;
+  height: 25rem;
+  width: 50 rem;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  color: aliceblue;
+  margin-left: 20rem;
+  margin-top: 10rem;
+}
+
+.cart-container #cartlist {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
