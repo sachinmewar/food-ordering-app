@@ -4,6 +4,7 @@ import Navigation from './components/Navigation';
 import Image from './components/Image'
 import Food from './components/Food'
 import Cart from './Cart/Cart';
+import CartProvider from './store/CartProvider';
 
 const App = () => {
   const [isCartVisible, setIsCartVisible] = useState(false);
@@ -16,12 +17,14 @@ const App = () => {
   };
 
   return (
-    <div>
-      { isCartVisible && <Cart onClickClose={onClickCloseButtonHandler} />}
-      <Navigation onCartChange={onCartChangeEventHandler} />
-      <Image />
-      <Food />
-    </div>
+    <CartProvider>
+      <div>
+        {isCartVisible && <Cart onClickClose={onClickCloseButtonHandler} />}
+        <Navigation onCartChange={onCartChangeEventHandler} />
+        <Image />
+        <Food />
+      </div>
+    </CartProvider>
   );
 };
 
