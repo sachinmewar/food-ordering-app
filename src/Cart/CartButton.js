@@ -1,18 +1,22 @@
-import { useState } from 'react';
 import './CartButton.css'
-// import { ShoppingCartOutlinedIcon as sco } from 'react-icons/io';
+import cartContext from '../store/cart-context'
+import { useContext } from 'react';
 
 const Cart = (props) => {
+
+   const cartCtx = useContext(cartContext);
+   const cartValue = cartCtx.items.length;
 
    const onClickHandler = () => {
       props.onButtonClick(true);
    };
 
+
    return (
       <button onClick={onClickHandler}>
          <span> Cart </span>
          <span> </span>
-         <span> 2 </span>
+         <span> {cartValue} </span>
       </button>
    );
 };
