@@ -1,6 +1,6 @@
 import './Cart.css';
 
-const Cart = () => {
+const Cart = (props) => {
    const dummy_item = <ul>{[
       { id: 'm1', name: 'sushi', cost: 225 },
       { id: 'm1', name: 'chicken', cost: 225 }
@@ -8,6 +8,11 @@ const Cart = () => {
       <li> items </li>
    })}
    </ul>
+
+   const onClickHandler = () => {
+      props.onClickClose(false);
+      console.log('false');
+   }
    return (
       <div className='cart-container'>
          <div id='cartList'>
@@ -17,7 +22,7 @@ const Cart = () => {
          </div>
 
          <div className='cartbtns'>
-            <button id='back'> Go Back </button>
+            <button id='close' onClick={onClickHandler}> Close </button>
             <button id='order'> Order </button>
          </div>
 
