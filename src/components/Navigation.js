@@ -2,13 +2,17 @@ import './Navigation.css';
 import CartButton from '../Cart/CartButton';
 import Profile from './Profile';
 
-const Navigation = () => {
+const Navigation = (props) => {
+
+   const onButtonClickEventHandler = (value) => {
+      props.onCartChange(value);
+   }
    return (
       <header className='navigation-container'>
          <p id='logo'> Logo </p>
          <p id='location'> Location </p>
          <input type='search' id='search-bar' />
-         <CartButton className='cart' />
+         <CartButton className='cart' onButtonClick={onButtonClickEventHandler} />
          <Profile />
       </header>
    );
