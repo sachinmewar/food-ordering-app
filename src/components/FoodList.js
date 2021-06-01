@@ -5,10 +5,11 @@ const FoodList = () => {
 
    const foodData = foodStore.map(foodDetails =>
       <FoodItem
-         key={foodDetails.name}
+         key={foodDetails.id}
+         id={foodDetails.id}
          imgName={foodDetails.img}
          name={foodDetails.name}
-         amount={foodDetails.amount}
+         price={foodDetails.amount}
       />
 
    );
