@@ -1,31 +1,47 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import './Amount.css';
 import React from 'react';
 import Input from '../UI/Input';
 
 const Amount = (props) => {
-   const [amount, setAmount] = useState('');
+   const [amountIsValid, setAmountIsValid] = useState(true);
+   const amountInputRef = useRef();
 
-   const onChangeEventHandler = (event) => {
-      setAmount(event.target.value);
+   const onSubmitHandler = (event) => {
+      event.preventDefault();
+      const enteredAmount = amountInputRef.current.value;
+      const enteredAmountNumber = +enteredAmount;
+
+      if (enteredAmount.trim().length === 0 ||
+         enteredAmountNumber < 1 ||
+         enteredAmountNumber > 10) {
+         setAmountIsValid(false);
+         return;
+      }
+      props.addToCart(enteredAmountNumber);
    };
 
    return (
-      <form className='amount-container'>
-         {
-            // Here we are passing the properties via JS object.
-         }
-         <Input label='Amount'
-            input={{
-               id: 'amount_' + props.id,
-               min: 1,
-               max: 10,
-               step: 1,
-               defaultValue: '1'
-            }}
-         />
-         <button id='add'> Add </button>
-      </form>
+      <div>
+         <form className='amount-container' onSubmit={onSubmitHandler}>
+            {
+               // Here we are passing the properties via JS object.
+            }
+            <Input label='amount'
+               ref={amountInputRef}
+               input={{
+                  id: 'amount',
+                  type: 'number',
+                  min: '1',
+                  max: '9',
+                  step: '1',
+                  defaultValue: '1'
+               }}
+            />
+            <button id='add'> Add </button>
+            {!amountIsValid && <p> Please enter valid amount </p>}
+         </form>
+      </div>
    );
 }
 export default Amount;
