@@ -15,7 +15,7 @@ const Cart = (props) => {
    return (
       <button onClick={onClickHandler}>
          <span> Cart </span>
-         <span> </span>
+         <span> icon </span>
          <span> {cartValue} </span>
       </button>
    );
