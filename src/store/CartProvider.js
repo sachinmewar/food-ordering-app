@@ -8,20 +8,62 @@ const defaultCartState = {
 
 const cartReducer = (initialState, action) => {
    if (action.type === 'ADD_ITEM') {
-      const updatedItem = initialState.items.concat(action.item);
-      const updatedAmount = initialState.totalAmount + action.item.amount
-         * action.item.price;
-      return ({
-         items: updatedItem,
-         totalAmount: updatedAmount
+      const updatedTotalAmount = initialState.totalAmount + action.item.amount * action.item.price;
+
+      const existingCartItemIndex = initialState.items.findIndex(item => (
+         item.id === action.item.id
+      ));
+
+      const existingCartItem = initialState.items[existingCartItemIndex];
+      let updatedItems;
+      if (existingCartItem) {
+         const updatedItem = {
+            ...existingCartItem,
+            amount: existingCartItem.amount + action.item.amount
+         }
+         updatedItems = [...initialState.items]
+         updatedItems[existingCartItemIndex] = updatedItem;
       }
-      );
+      else {
+         updatedItems = initialState.items.concat(action.item);
+      }
+      return ({
+         items: updatedItems,
+         totalAmount: updatedTotalAmount
+      });
+   }
+
+   if (action.type === 'REMOVE_ITEM') {
+      const existingCartItemIndex = initialState.items.findIndex(
+         (item) => (
+            item.id === action.id
+         )
+      )
+      const existingItem = initialState.items[existingCartItemIndex];
+      const updatedTotalAmount = initialState.totalAmount - existingItem.price;
+      let updatedItems;
+
+      // If we return true using filter than it will keep the item and if we return false
+      // it will remove the item.
+      if (existingItem.amount === 1) {
+         updatedItems = initialState.items.filter(
+            (item) => item.id !== action.id
+         );
+      }
+      else {
+         const updatedItem = {
+            ...existingItem,
+            amount: existingItem.amount - 1
+         }
+         updatedItems = [...initialState.items];
+         updatedItems[existingCartItemIndex] = updatedItem;
+      }
+      return {
+         items: updatedItems,
+         totalAmount: updatedTotalAmount
+      }
    }
    return defaultCartState;
-   // case 'remove':
-   //    const updatedItem = initialState; // remove
-   //    const updatedAmount
-   //    return {};
 };
 const CartProvider = (props) => {
    const [cartState, dispatchCartAction] = useReducer(
@@ -37,7 +79,15 @@ const CartProvider = (props) => {
       );
 
    };
-   const removeItemFromCartHandler = () => { };
+   const removeItemFromCartHandler = (id) => {
+      dispatchCartAction(
+         {
+            type: 'REMOVE_ITEM',
+            id: id
+         }
+      );
+
+   };
 
    const cartValue = {
       items: cartState.items,
