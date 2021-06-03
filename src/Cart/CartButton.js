@@ -1,6 +1,7 @@
 import './CartButton.css'
 import cartContext from '../store/cart-context'
 import { useContext } from 'react';
+import CartIcon from './CartIcon.js';
 
 const Cart = (props) => {
 
@@ -13,10 +14,10 @@ const Cart = (props) => {
 
 
    return (
-      <button onClick={onClickHandler}>
+      <button onClick={onClickHandler} class='cart-button'>
          <span> Cart </span>
-         <span> icon </span>
-         <span> {cartValue} </span>
+         <span id='icon'> <CartIcon />  </span>
+         <span id='value'> {cartValue} </span>
       </button>
    );
 };
