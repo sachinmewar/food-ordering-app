@@ -1,7 +1,7 @@
 import './Cart.css';
 import { useContext } from 'react';
 import cartContext from '../store/cart-context'
-import CartItem from './CartItem.js';
+import CartItem from './CartItem.js'
 
 const Cart = (props) => {
    const cartCtx = useContext(cartContext);
@@ -48,7 +48,7 @@ const Cart = (props) => {
 
    return (
       <div className='cart-container'>
-         <div id='cartList'>
+         <div id='cart-list'>
             {cart_items}
             <span> Total Amount </span>
             <span>  {totalAmount} </span>
