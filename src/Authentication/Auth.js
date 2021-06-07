@@ -1,13 +1,15 @@
 
 import { useState, useEffect } from 'react';
-import Keycloak from './keycloak-js';
+import Keycloak from 'keycloak-js';
 import UserInfo from './UserInfo';
 import Logout from './Logout';
 
-const Auth = () => {
+const Auth = (props) => {
+
    const [keycloakValue, setKeycloakValue] = useState(null);
-   const [IsAuthenticated, setIsAuthenticated] = useState();
+   const [IsAuthenticated, setIsAuthenticated] = useState(false);
    useEffect(() => {
+      console.log('useEffct.........');
       const keycloak = Keycloak('/keycloak.json');
       keycloak.init(
          {
@@ -15,16 +17,23 @@ const Auth = () => {
          }
       ).then(
          authenticated => {
-            setKeyCloakValue(keycloak);
-            setIsAuthenticatedState(authenticated)
+            setKeycloakValue(keycloak);
+            setIsAuthenticated(authenticated);
+            props.authenticated(authenticated);
+            console.log(authenticated);
          }
       )
    }, [])
 
+   props.authenticated(IsAuthenticated);
+
    return (
       <div>
-         <UserInfo keycloak={keycloakValue} />
-         <Logout />
+         {
+            IsAuthenticated &&
+            <UserInfo keycloak={keycloakValue} /> &&
+            <Logout keycloak={keycloakValue} logout={props.authenticated} />
+         }
       </div>
    )
 }
