@@ -1,0 +1,8 @@
+{
+  "realm": "food-order-app",
+  "auth-server-url": "http://localhost:8080/auth/",
+  "ssl-required": "external",
+  "resource": "food-order",
+  "public-client": true,
+  "confidential-port": 0
+}
