@@ -1,18 +1,21 @@
 .cart-container {
   position: absolute;
   height: 25rem;
-  width: 50 rem;
-  background-color: black;
+  width: 45rem;
+  background-color: brown;
   display: flex;
   flex-direction: column;
   color: white;
-  margin-left: 20rem;
-  margin-top: 10rem;
+  margin-left: 26.5rem;
+  margin-top: 12rem;
+  overflow: scroll;
 }
 
-.cart-container #cartlist {
+.cart-container #cart-list {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   color: white;
+  width: inherit;
+  height: inherit;
 }
