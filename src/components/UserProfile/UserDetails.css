@@ -1,0 +1,11 @@
+.user-details {
+  position: absolute;
+  height: 15rem;
+  width: 14.75rem;
+  margin-left: 80rem;
+  background-color: teal;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
