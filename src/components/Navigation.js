@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import './Navigation.css';
 import CartButton from '../Cart/CartButton';
-import ProfileButton from './UserProfile/ProfileButton';
+// import ProfileButton from './UserProfile/ProfileButton';
+import Logout from '../Authentication/Logout';
 
 const Navigation = (props) => {
 
@@ -15,11 +16,10 @@ const Navigation = (props) => {
 
    return (
       <header className='navigation-container'>
-         <p id='logo'> Logo </p>
-         <p id='location'> Location </p>
-         <input type='search' id='search-bar' />
+         <p id='logo'> Food-order </p>
          <CartButton className='cart' onButtonClick={onButtonClickEventHandler} />
-         <ProfileButton onProfileClick={onProfileButtonClickHandler} />
+         {/* <ProfileButton onProfileClick={onProfileButtonClickHandler} /> */}
+         <Logout keycloak={props.keycloak} />
       </header>
    );
 };
