@@ -1,0 +1,13 @@
+.profile-button button {
+  margin: 1rem 3rem;
+  border: none;
+  background-color: darkred;
+  font-size: 1.3rem;
+  color: white;
+  border-radius: 20px;
+  padding: 0.4rem;
+}
+
+.profile-button button:hover {
+  cursor: pointer;
+}
