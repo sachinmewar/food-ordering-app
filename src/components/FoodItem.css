@@ -18,3 +18,8 @@
   font-weight: 700;
   font-size: 1.5rem;
 }
+
+.foodItem-container:hover {
+  cursor: pointer;
+  background-color: aqua;
+}
