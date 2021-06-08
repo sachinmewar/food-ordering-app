@@ -9,7 +9,6 @@ const Auth = (props) => {
    const [keycloakValue, setKeycloakValue] = useState(null);
    const [IsAuthenticated, setIsAuthenticated] = useState(false);
    useEffect(() => {
-      console.log('useEffct.........');
       const keycloak = Keycloak('/keycloak.json');
       keycloak.init(
          {
@@ -20,7 +19,6 @@ const Auth = (props) => {
             setKeycloakValue(keycloak);
             setIsAuthenticated(authenticated);
             props.authenticated(authenticated);
-            console.log(authenticated);
          }
       )
    }, [])
