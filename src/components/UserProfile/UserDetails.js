@@ -1,10 +1,13 @@
+
+import Logout from '../../Authentication/Logout';
+import UserInfo from '../../Authentication/UserInfo';
 import './UserDetails.css';
-const UserDetails = () => {
+const UserDetails = ({ keycloak }) => {
    return (
       <div className='user-details'>
          <div> Image </div>
-         <div id='name'> Sachin Mewar </div>
-         <div id='email'> test@test.com </div>
+         <UserInfo keycloak={keycloak} />
+         <Logout keycloak={keycloak} />
       </div>
    )
 }
