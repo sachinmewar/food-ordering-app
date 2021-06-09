@@ -19,3 +19,29 @@
   width: inherit;
   height: inherit;
 }
+
+.cartbtns {
+  margin-left: 25rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.cartbtns button {
+  cursor: pointer;
+  width: 6rem;
+  height: 2.5rem;
+  border-radius: 12px;
+  color: white;
+  font-size: larger;
+  background-color: #2c0d00;
+}
+
+#total {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
