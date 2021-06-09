@@ -1,7 +1,7 @@
 
 // import keycloak from 'keycloak-js';
 // import { useHistory } from 'react-router-dom';
-
+import './Logout.css';
 const Logout = ({ keycloak }) => {
    // const history = useHistory();
    const onLogoutHandler = () => {
