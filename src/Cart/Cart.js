@@ -50,8 +50,10 @@ const Cart = (props) => {
       <div className='cart-container'>
          <div id='cart-list'>
             {cart_items}
-            <span> Total Amount </span>
-            <span>  {totalAmount} </span>
+            <div id='total'>
+               <span> Total Amount </span>
+               <span>  {totalAmount} </span>
+            </div>
          </div>
 
          <div className='cartbtns'>
