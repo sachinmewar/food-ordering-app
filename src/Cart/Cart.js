@@ -1,12 +1,13 @@
 import './Cart.css';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import cartContext from '../store/cart-context'
 import CartItem from './CartItem.js'
+import Checkout from './Checkout';
 
 const Cart = (props) => {
+   const [orderState, setOrderState] = useState(false);
    const cartCtx = useContext(cartContext);
    const totalAmount = `₹${cartCtx.totalAmount.toFixed(2)}`;
-
    const onItemRemoveHandler = (id) => {
       cartCtx.removeItem(id);
    };
@@ -39,13 +40,21 @@ const Cart = (props) => {
          }
       </ul>
    );
+
    const onClickHandler = () => {
       props.onClickClose(false);
-      console.log('false');
    }
 
    const has_items = cartCtx.items.length > 0;
 
+   const onClickOrderHandler = () => {
+      setOrderState(true);
+   }
+
+   const actionButtons = <div className='cartbtns'>
+      <button id='close' onClick={onClickHandler}> Close </button>
+      {has_items && <button id='order' onClick={onClickOrderHandler} > Order </button>}
+   </div>
    return (
       <div className='cart-container'>
          <div id='cart-list'>
@@ -56,11 +65,9 @@ const Cart = (props) => {
             </div>
          </div>
 
-         <div className='cartbtns'>
-            <button id='close' onClick={onClickHandler}> Close </button>
-            {has_items && <button id='order'> Order </button>}
-         </div>
+         {orderState && <Checkout onCancel={onClickHandler} />}
 
+         {!orderState && actionButtons}
       </div>
    );
 };
