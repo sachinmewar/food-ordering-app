@@ -66,7 +66,6 @@ const Cart = (props) => {
          </div>
 
          {orderState && <Checkout onCancel={onClickHandler} />}
-
          {!orderState && actionButtons}
       </div>
    );
