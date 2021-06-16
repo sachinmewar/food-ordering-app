@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import Navigation from './components/Navigation';
-import Image from './components/Image'
-import Food from './components/Food'
-import Cart from './Cart/Cart';
+import Navigation from './components/Layout/Navigation';
+import Image from './components/FoodItems/Image';
+import Food from './components/FoodItems/Food'
+import Cart from './components/Cart/Cart';
 import CartProvider from './store/CartProvider';
 import Auth from './Authentication/Auth'
-import UserDetails from './components/UserProfile/UserDetails';
+// import UserDetails from './components/UserProfile/UserDetails';
 
 const App = () => {
   const [isCartVisible, setIsCartVisible] = useState(false);
