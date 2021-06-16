@@ -67,6 +67,10 @@ const Cart = (props) => {
                   items: cartCtx.items,
                })
          })
+      if (!response.ok) {
+         throw console.error('Error occurs');
+      }
+
       setIsSubmitting(false);
       setDidSubmit(true);
       cartCtx.clearCart();
@@ -97,8 +101,10 @@ const Cart = (props) => {
          </div>
       </React.Fragment>
    const isSubmittingModalContent = <p> Sending Modal Data </p>
+
+
    return (
-      <div>
+      <div className='cart-container'>
          {!isSubmitting && !didSubmit && cartModalContent}
          {isSubmitting && isSubmittingModalContent}
          {didSubmit && !isSubmitting && didSubmitModalContent}
