@@ -8,6 +8,8 @@ const Cart = (props) => {
    const [orderState, setOrderState] = useState(false);
    const cartCtx = useContext(cartContext);
    const totalAmount = `₹${cartCtx.totalAmount.toFixed(2)}`;
+   const [isSubmitting, setIsSubmitting] = useState(false);
+
    const onItemRemoveHandler = (id) => {
       cartCtx.removeItem(id);
    };
@@ -51,6 +53,20 @@ const Cart = (props) => {
       setOrderState(true);
    }
 
+   const submitOrderHandler = (userData) => {
+      setIsSubmitting(true);
+      fetch('https://food-order-765a7-default-rtdb.firebaseio.com/orders.json',
+         {
+            method: 'POST',
+            body: JSON.stringify(
+               {
+                  user: userData,
+                  items: cartCtx.items,
+               })
+         })
+      setIsSubmitting(false);
+   }
+
    const actionButtons = <div className='cartbtns'>
       <button id='close' onClick={onClickHandler}> Close </button>
       {has_items && <button id='order' onClick={onClickOrderHandler} > Order </button>}
@@ -64,8 +80,8 @@ const Cart = (props) => {
                <span>  {totalAmount} </span>
             </div>
          </div>
-
-         {orderState && <Checkout onCancel={onClickHandler} />}
+         {orderState && !isSubmitting && <Checkout onConfirm={submitOrderHandler} onCancel={onClickHandler} />}
+         {isSubmitting && <p> Loading... </p>}
          {!orderState && actionButtons}
       </div>
    );
