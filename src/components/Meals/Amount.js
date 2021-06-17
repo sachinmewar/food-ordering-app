@@ -27,7 +27,7 @@ const Amount = (props) => {
             {
                // Here we are passing the properties via JS object.
             }
-            <Input label='amount'
+            <Input label='Amount'
                ref={amountInputRef}
                input={{
                   id: 'amount',
