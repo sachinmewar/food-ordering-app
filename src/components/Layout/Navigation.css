@@ -1,4 +1,5 @@
 .navigation-container {
+  position: fixed;
   width: 100%;
   height: 4rem;
   background-color: brown;
