@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './Navigation.css';
 import CartButton from './CartButton';
 // import ProfileButton from './UserProfile/ProfileButton';
@@ -10,9 +9,9 @@ const Navigation = (props) => {
       props.onCartChange(value);
    }
 
-   const onProfileButtonClickHandler = (value) => {
-      props.onProfileClick(value);
-   }
+   // const onProfileButtonClickHandler = (value) => {
+   //    props.onProfileClick(value);
+   // }
 
    return (
       <header className='navigation-container'>
