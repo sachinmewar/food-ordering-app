@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Navigation from './components/Layout/Navigation';
-import Image from './components/FoodItems/Image';
-import Food from './components/FoodItems/Food'
+import Image from './components/Meals/Image';
+import Food from './components/Meals/Food'
 import Cart from './components/Cart/Cart';
 import CartProvider from './store/CartProvider';
 import Auth from './Authentication/Auth'
@@ -9,7 +9,7 @@ import Auth from './Authentication/Auth'
 
 const App = () => {
   const [isCartVisible, setIsCartVisible] = useState(false);
-  const [showProfile, setShowProfile] = useState(false);
+  // const [showProfile, setShowProfile] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
   const [keycloakValue, setKeycloakValue] = useState(null);
   const onCartChangeEventHandler = (value) => {
@@ -21,7 +21,7 @@ const App = () => {
   };
 
   const onProfileClickHandler = (value) => {
-    setShowProfile(value);
+    // setShowProfile(value);
   }
 
   const keycloakHandler = (IsAuthenticated, keycloak) => {
@@ -36,10 +36,11 @@ const App = () => {
           authenticated &&
           <div>
             {isCartVisible && <Cart onClickClose={onClickCloseButtonHandler} />}
-            <Navigation onCartChange={onCartChangeEventHandler} onProfileClick={onProfileClickHandler} keycloak={keycloakValue} />
+            {!isCartVisible && <Navigation onCartChange={onCartChangeEventHandler}
+              onProfileClick={onProfileClickHandler} keycloak={keycloakValue} />}
             {/* {showProfile && <UserDetails keycloak={keycloakValue} />} */}
-            <Image />
-            <Food />
+            {!isCartVisible && < Image />}
+            {!isCartVisible && < Food />}
           </div>
         }
       </div>
